@@ -23,4 +23,9 @@ jobs:
       - uses: actions/checkout@v4
     # アプリをビルドしてバイナリ作成
       - name: Application Build
-        run: xcodebuild
+      # xcodebuildというビルドツールを使いbuild, test, archiveなどを実行できる
+        run: xcodebuild \
+          -project SampleApp.xcodeproj \
+          -scheme SampleApp \
+          -sdk iphonesimulator \
+          build
