@@ -1,4 +1,22 @@
 
-// ワークフローの名前を設定
+# GitHub Actionsの名前を設定
 name: Build
 
+# ワークフローの名前
+run-name: Build App
+
+on:
+  push: 
+    branches: [develop]
+
+jobs:
+# jobの名前を設定
+  build:
+  # runs-on でランナーを指定
+    runs-on: macos-latest
+
+# stepsでActionを実行
+    steps:
+      - name: Print Build Start Message
+        run: echo "start build process"
+    
