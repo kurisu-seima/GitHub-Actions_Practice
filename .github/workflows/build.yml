@@ -19,4 +19,8 @@ jobs:
     steps:
       - name: Print Build Start Message
         run: echo "start build process"
-    
+    # 既存のActionを利用して、リポジトリからソースコードをフェッチ
+      - uses: actions/checkout@v4
+    # アプリをビルドしてバイナリ作成
+      - name: Application Build
+        run: xcodebuild
