@@ -36,3 +36,12 @@ jobs:
             -scheme SampleApp \
             -sdk iphonesimulator \
             build
+# ビルド完了後のメッセージ出力（試しにjobを2つ定義したいだけ）
+  notify:
+    runs-on: macos-latest
+    needs: build
+    steps:
+      - name: Notify Build Complete
+        run: echo "Build Complete!"
+    
+
