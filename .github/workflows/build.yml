@@ -25,7 +25,6 @@ jobs:
       - name: Application Build
       # xcodebuildというビルドツールを使いbuild, test, archiveなどを実行できる
         run: xcodebuild \
-          -project SampleApp.xcodeproj \
           -scheme SampleApp \
           -sdk iphonesimulator \
           build
