@@ -21,6 +21,9 @@ jobs:
         run: echo "start build process"
     # 既存のActionを利用して、リポジトリからソースコードをフェッチ
       - uses: actions/checkout@v4
+    # 利用できるXcodeバージョンを確認
+      - name: List available Xcode versions
+        run: ls /Applications | grep Xcode
     # Xcodeのバージョンを指定
       - name: Select Xcode version
         run: sudo xcode-select -s /Applications/Xcode_15.3.app
