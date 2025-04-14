@@ -21,6 +21,9 @@ jobs:
         run: echo "start build process"
     # 既存のActionを利用して、リポジトリからソースコードをフェッチ
       - uses: actions/checkout@v4
+    # Xcodeのバージョンを指定
+      - name: Select Xcode version
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app
     # アプリをビルドしてバイナリ作成
       - name: Application Build
       # xcodebuildというビルドツールを使いbuild, test, archiveなどを実行できる
