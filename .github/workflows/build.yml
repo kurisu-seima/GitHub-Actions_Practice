@@ -24,4 +24,5 @@ jobs:
     # アプリをビルドしてバイナリ作成
       - name: Application Build
       # xcodebuildというビルドツールを使いbuild, test, archiveなどを実行できる
-        run: swift build -v
+        run: |
+          xcodebuild build
