@@ -24,4 +24,9 @@ jobs:
     # アプリをビルドしてバイナリ作成
       - name: Application Build
       # xcodebuildというビルドツールを使いbuild, test, archiveなどを実行できる
-        run: xcodebuild -scheme SampleApp -sdk iphonesimulator -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max' build
+        run: |
+          xcodebuild \
+            -project SampleApp.xcodeproj \
+            -scheme SampleApp \
+            -sdk iphonesimulator \
+            build
