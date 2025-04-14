@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
@@ -30,21 +30,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		EC6A45FA2DABEBDB002387AC /* SampleApp */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SampleApp;
-			sourceTree = "<group>";
-		};
-		EC6A460B2DABEBDD002387AC /* SampleAppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SampleAppTests;
-			sourceTree = "<group>";
-		};
-		EC6A46152DABEBDD002387AC /* SampleAppUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SampleAppUITests;
-			sourceTree = "<group>";
-		};
+		EC6A45FA2DABEBDB002387AC /* SampleApp */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SampleApp; sourceTree = "<group>"; };
+		EC6A460B2DABEBDD002387AC /* SampleAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SampleAppTests; sourceTree = "<group>"; };
+		EC6A46152DABEBDD002387AC /* SampleAppUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SampleAppUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +175,7 @@
 				};
 			};
 			buildConfigurationList = EC6A45F32DABEBDB002387AC /* Build configuration list for PBXProject "SampleApp" */;
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -195,7 +184,6 @@
 			);
 			mainGroup = EC6A45EF2DABEBDB002387AC;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = EC6A45F92DABEBDB002387AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
