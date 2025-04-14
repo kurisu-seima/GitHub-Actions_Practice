@@ -26,7 +26,7 @@ jobs:
       # xcodebuildというビルドツールを使いbuild, test, archiveなどを実行できる
         run: |
           xcodebuild \ 
-            -project SampleApp.xcodeproj \
+            -target SampleApp.xcodeproj \
             -scheme SampleApp \
             -sdk iphonesimulator \
             build
