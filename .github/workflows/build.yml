@@ -5,9 +5,30 @@ name: Build
 # ワークフローの名前
 run-name: Build App
 
+
 on:
-  push: 
-    branches: [develop]
+  # GitHubActions上で手動実行できる
+  workflow_dispatch:
+  # push イベントが発生したときにトリガーされる
+  push:
+    # 条件フィルター：ブランチ
+    branches:
+      - develop
+    # 条件フィルター：タグ
+    tags:
+      - 'v*'
+
+  # pull_request イベントが発生したときにトリガーされる
+  pull_request:
+    # 条件フィルター：ブランチ（develop）
+    branches:
+      - develop
+    # アクティビティタイプ（アクティビティの種類）
+    types:
+    # PRが開かれた時
+      - opened 
+    # 既存のPRに新しいコミットがpushされた時       
+      - synchronize  
 
 jobs:
 # jobの名前を設定
@@ -39,9 +60,7 @@ jobs:
 # ビルド完了後のメッセージ出力（試しにjobを2つ定義したいだけ）
   notify:
     runs-on: macos-latest
-    # needs: build
+    needs: build
     steps:
       - name: Notify Build Complete
         run: echo "Build Complete!"
-    
-
