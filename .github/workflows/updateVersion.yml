@@ -5,7 +5,7 @@ run-name: update to 1.0.0
 on:
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   agvtool_update:
