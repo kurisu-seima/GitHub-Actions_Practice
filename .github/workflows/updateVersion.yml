@@ -1,6 +1,6 @@
 name: Update Version
 
-run-name: update to 1.0.0
+run-name: update to 1.0.1
 
 on:
   pull_request:
@@ -11,10 +11,7 @@ on:
 
 jobs:
   agvtool_update:
-    if: |
-        github.event.pull_request.merged == true &&
-        github.event.pull_request.base.ref == 'main' &&
-        startsWith(github.event.pull_request.head.ref, 'release/')
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' && startsWith(github.event.pull_request.base.ref, 'release/')
     runs-on: macos-latest
     steps:
       - name: Checkout code
