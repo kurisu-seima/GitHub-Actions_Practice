@@ -1,0 +1,74 @@
+
+# GitHub Actionsの名前を設定
+name: Build
+
+# ワークフローの名前
+run-name: Build App
+
+
+on:
+  # GitHubActions上で手動実行できる
+  workflow_dispatch:
+  # push イベントが発生したときにトリガーされる
+  push:
+    # 条件フィルター：ブランチ
+    branches:
+      - develop
+    # 条件フィルター：タグ
+    tags:
+      - 'v*'
+
+  # pull_request イベントが発生したときにトリガーされる
+  pull_request:
+    # 条件フィルター：ブランチ（develop）
+    branches:
+      - develop
+    # アクティビティタイプ（アクティビティの種類）
+    types:
+    # PRが開かれた時
+      - opened 
+    # 既存のPRに新しいコミットがpushされた時       
+      - synchronize  
+
+jobs:
+# jobの名前を設定
+  build:
+  # runs-on でランナーを指定
+    runs-on: macos-latest
+  # outputを設定
+    outputs:
+      app_version: ${{ steps.get_version.outputs.my_app_version}}
+
+# stepsでActionを実行
+    steps:
+      - name: Print Build Start Message
+        run: echo "start build process"
+        id: build_start
+    # 既存のActionを利用して、リポジトリからソースコードをフェッチ
+      - uses: actions/checkout@v4
+    # 利用できるXcodeバージョンを確認
+      - name: List available Xcode versions
+        run: ls /Applications | grep Xcode
+    # Xcodeのバージョンを指定
+      - name: Select Xcode version
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app
+    # アプリのバージョンを取得
+      - name: Get App Version
+        id: get_version
+        run: echo "my_app_version=1.2.3" >> $GITHUB_OUTPUT
+    # アプリをビルド
+      - name: Application Build
+      # xcodebuildというビルドツールを使いbuild, test, archiveなどを実行できる
+        run: |
+          xcodebuild \
+            -project SampleApp.xcodeproj \
+            -scheme SampleApp \
+            -sdk iphonesimulator \
+            build
+# ビルド完了後のメッセージ出力（試しにjobを2つ定義したいだけ）
+  notify:
+    runs-on: macos-latest
+    needs: build
+    steps:
+      - name: Notify Build Complete
+        run: echo "Build Complete! Version ${{ needs.build.outputs.app_version }}"

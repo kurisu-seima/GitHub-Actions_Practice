@@ -1,0 +1,29 @@
+name: Update Version
+
+run-name: update to 1.0.0
+
+on:
+  pull_request:
+    branches:
+      - release/**
+    types:
+      - closed
+
+jobs:
+  agvtool_update:
+    if: |
+        github.event.pull_request.merged == true &&
+        github.event.pull_request.base.ref == 'main' &&
+        startsWith(github.event.pull_request.head.ref, 'release/')
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: checkout completed
+        run: echo "Completed Code Checkout"
+
+#   add_tag:
+#     runs-on: macos-latest
+#     steps:
+#       - name: tag set
+#         uses: actions/checkout@v4
