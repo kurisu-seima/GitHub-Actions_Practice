@@ -4,8 +4,8 @@ run-name: update to 1.0.1
 
 on:
   pull_request:
-    # branches:
-    #   - release/**
+    branches:
+      - 'release/**'
     types:
       - closed
 
