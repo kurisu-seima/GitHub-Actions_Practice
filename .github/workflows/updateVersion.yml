@@ -1,6 +1,6 @@
 name: Update Version
 
-run-name: version update by ${{github.event.pull_request.head.ref}}
+run-name: version update for ${{github.event.pull_request.head.ref}}
 
 on:
   pull_request:
