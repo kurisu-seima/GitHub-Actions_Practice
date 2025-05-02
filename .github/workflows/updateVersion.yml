@@ -1,6 +1,6 @@
 name: Update Version
 
-run-name: update to 1.0.1
+run-name: version update by ${{github.event.pull_request.head.ref}}
 
 on:
   pull_request:
