@@ -27,6 +27,8 @@ jobs:
           BRANCH_NAME="${{github.event.pull_request.head.ref}}"
           EXTRACT_VERSION="${BRANCH_NAME#release/}"
           echo "release_version=$EXTRACT_VERSION" >> $GITHUB_OUTPUT
+      - name: print release version
+        run: echo "release version is ${{steps.extract_version.outputs.release_version}}"
 
   add_tag:
     needs: extract_release_version
