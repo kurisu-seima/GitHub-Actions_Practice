@@ -10,20 +10,26 @@ on:
       - closed
 
 jobs:
-  agvtool_update:
+  extract_release_version:
     if: | 
       github.event.pull_request.merged == true &&
       github.event.pull_request.base.ref == 'main' &&
       startsWith(github.event.pull_request.head.ref, 'release/')
     runs-on: macos-latest
+    outputs:
+      release_version: ${{steps.extract_version.outputs.release_version}} 
     steps:
-      - name: Checkout code
+      - name: checkout code
         uses: actions/checkout@v4
-      - name: checkout completed
-        run: echo "Completed Code Checkout"
+      - name: Extract version from release branch
+        id: extract_version
+        run: |
+          BRANCH_NAME="${{github.event.pull_request.head.ref}}"
+          EXTRACT_VERSION="${BRANCH_NAME#release/}"
+          echo "release_version=$EXTRACT_VERSION" >> $GITHUB_OUTPUT
 
   add_tag:
-    needs: agvtool_update
+    needs: extract_release_version
     runs-on: macos-latest
     steps:
       - name: dummy action
