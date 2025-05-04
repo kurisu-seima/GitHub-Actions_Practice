@@ -96,6 +96,7 @@ jobs:
         run: |
           RELEASE_VERSION="${{needs.extract_release_version.outputs.release_version}}"
           git add SampleApp/Info.plist
+          git add SampleApp.xcodeproj
           git commit -m "Update app version to $RELEASE_VERSION"
           git push origin HEAD
     
