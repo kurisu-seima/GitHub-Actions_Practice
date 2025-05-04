@@ -62,13 +62,16 @@ jobs:
         run: echo current app version is ${{steps.current_app_version.outputs.current_version}}
 
   compare_version:
-    needs: extract_current_version
+    needs: 
+      - extract_release_version  
+      - extract_current_version
     runs-on: macos-latest
     steps:
       - name: compare app version
         run: |
-          CURRENT_VERSION="${{ steps.extract_current_version.outputs.current_version }}"
-          RELEASE_VERSION="${{ steps.extract_release_version.outputs.release_version }}"
+          RELEASE_VERSION="${{needs.extract_release_version.outputs.release_version}}"
+          CURRENT_VERSION="${{needs.extract_current_version.outputs.current_version}}"
+
           if [[ "$CURRENT_VERSION" < "$RELEASE_VERSION" ]]; then
             echo "needs update version"
           else 
