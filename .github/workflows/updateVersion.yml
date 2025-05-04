@@ -82,16 +82,12 @@ jobs:
           else 
             echo "already release version"
           fi
-      - name: build app
-        run: |
-          xcodebuild \
-          -project SampleApp.xcodeproj \
-          -scheme SampleApp \
-          -sdk iphonesimulator \
       - name: Setup Git user
         run: |
           git config --global user.name "kurisu-seima"
           git config --global user.email "kurisuseima@gmail.com"
+      - name: confirm status
+        run: git status
       - name: commit and push version update
         run: |
           RELEASE_VERSION="${{needs.extract_release_version.outputs.release_version}}"
