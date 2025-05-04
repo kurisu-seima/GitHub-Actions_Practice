@@ -38,6 +38,8 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
+      - name: current directory 
+        run: ls -a
       - name: read current app version from Info.plist
         id: current_app_version
         run: |
