@@ -74,6 +74,8 @@ jobs:
 
           if [[ "$CURRENT_VERSION" < "$RELEASE_VERSION" ]]; then
             echo "needs update version"
+            agvtool new-marketing-version $RELEASE_VERSION
+            agvtool what-marketing-version 
           else 
             echo "already release version"
           fi
