@@ -56,7 +56,7 @@ jobs:
       - name: read current app version from Info.plist
         id: current_app_version
         run: |
-          CURRENT_VERSION=$(/usr/libexec/PlistBuddy -c "Print ApplicationProperties:CFBundleShortVersionString" ./SampleApp/Info.plist)
+          CURRENT_VERSION=$(xcodebuild -showBuildSettings -project SampleApp.xcodeproj | grep MARKETING_VERSION | awk '{print $3}')
           echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
       - name: print current app version
         run: echo current app version is ${{steps.current_app_version.outputs.current_version}}
