@@ -30,7 +30,7 @@ jobs:
       - name: print release version
         run: echo "release version is ${{steps.extract_version.outputs.release_version}}"
 
-  version_increment:
+  extract_current_version:
     needs: extract_release_version
     runs-on: macos-latest
     outputs:
@@ -61,4 +61,15 @@ jobs:
       - name: print current app version
         run: echo current app version is ${{steps.current_app_version.outputs.current_version}}
 
+  compare_version:
+    needs: extract_release_version
+    runs-on: macos-latest
+    steps:
+      - name: compare app version
+        run: |
+          if [["${{steps.extract_current_version.outputs.current_version}}" < "${{steps.extract_release_version.outputs.release_version}}" ]]; then
+            echo "needs update version"
+          else 
+            echo "already release version"
+          fi
 
