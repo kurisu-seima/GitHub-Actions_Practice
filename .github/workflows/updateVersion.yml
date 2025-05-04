@@ -42,16 +42,6 @@ jobs:
         run: xcodebuild -version
       - name: List available Xcode versions
         run: ls /Applications | grep Xcode
-    # アプリのビルド時に利用
-    #   - name: select xcode version
-    #     run: sudo xcode-select -s '/Applications/Xcode_16.2.app/Contents/Developer'
-    #   - name: build app
-    #     run: |
-    #       xcodebuild \
-    #         -project SampleApp.xcodeproj \
-    #         -scheme SampleApp \
-    #         -sdk iphonesimulator \
-    #         build
       - name: current directory 
         run: ls -a
       - name: read current app version from Info.plist
@@ -70,6 +60,14 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
+      - name: select xcode version
+        run: sudo xcode-select -s '/Applications/Xcode_16.2.app/Contents/Developer'
+      - name: build app
+        run: |
+          xcodebuild \
+          -project SampleApp.xcodeproj \
+          -scheme SampleApp \
+          -sdk iphonesimulator \
       - name: compare app version
         run: |
           RELEASE_VERSION="${{needs.extract_release_version.outputs.release_version}}"
