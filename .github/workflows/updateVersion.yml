@@ -88,6 +88,7 @@ jobs:
           git config --global user.email "kurisuseima@gmail.com"
       - name: commit and push version update
         run: |
+          RELEASE_VERSION="${{needs.extract_release_version.outputs.release_version}}"
           git add SampleApp/Info.plist
           git commit -m "Update app version to $RELEASE_VERSION"
           git push origin HEAD
