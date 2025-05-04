@@ -53,6 +53,8 @@ jobs:
         run: echo current app version is ${{steps.current_app_version.outputs.current_version}}
 
   compare_version:
+    permissions:
+      contents: write
     needs: 
       - extract_release_version  
       - extract_current_version
@@ -80,4 +82,15 @@ jobs:
           else 
             echo "already release version"
           fi
+      - name: Setup Git user
+        run: |
+          git config --global user.name "kurisu-seima"
+          git config --global user.email "kurisuseima@gmail.com"
+      - name: commit and push version update
+        run: |
+          git add SampleApp/Info.plist
+          git commit -m "Update app version to $RELEASE_VERSION"
+          git push origin HEAD
+    
+          
 
