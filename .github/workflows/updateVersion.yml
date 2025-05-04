@@ -38,6 +38,12 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
+      - name: Check Xcode version
+        run: xcodebuild -version
+      - name: Set up Xcode 16.0
+        uses: apple-actions/setup-xcode@v2
+        with:
+          xcode-version: '16.0'
       - name: build app
         run: |
           xcodebuild \
