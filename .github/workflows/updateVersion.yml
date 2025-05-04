@@ -38,6 +38,13 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
+      - name: build app
+        run: |
+          xcodebuild \
+            -project SampleApp.xcodeproj \
+            -scheme SampleApp \
+            -sdk iphonesimulator \
+            build
       - name: current directory 
         run: ls -a
       - name: read current app version from Info.plist
