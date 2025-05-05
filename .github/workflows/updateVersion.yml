@@ -77,24 +77,14 @@ jobs:
 
           if [[ "$CURRENT_VERSION" < "$RELEASE_VERSION" ]]; then
             echo "needs update version"
-            agvtool new-marketing-version $RELEASE_VERSION
-            agvtool what-marketing-version
+            fastlane set_version version:$RELEASE_VERSION
+
+            # fastlaneで実行するので下記で更新失敗した時よりも楽に解決してくれる
+            # agvtool new-marketing-version $RELEASE_VERSION
+            # agvtool what-marketing-version
           else 
             echo "already release version"
           fi
-      - name: Setup Git user
-        run: |
-          git config --global user.name "kurisu-seima"
-          git config --global user.email "kurisuseima@gmail.com"
-      - name: confirm status
-        run: git status
-      - name: commit and push version update
-        run: |
-          RELEASE_VERSION="${{needs.extract_release_version.outputs.release_version}}"
-          git add SampleApp/Info.plist
-          git add SampleApp.xcodeproj
-          git commit -m "Update app version to $RELEASE_VERSION"
-          git push origin HEAD
     
           
 
