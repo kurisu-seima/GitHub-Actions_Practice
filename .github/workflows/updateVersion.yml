@@ -77,7 +77,7 @@ jobs:
 
           if [[ "$CURRENT_VERSION" < "$RELEASE_VERSION" ]]; then
             echo "needs update version"
-            fastlane set_version version:$RELEASE_VERSION
+            bundle exec fastlane set_version version:$RELEASE_VERSION
 
             # fastlaneで実行するので下記で更新失敗した時よりも楽に解決してくれる
             # agvtool new-marketing-version $RELEASE_VERSION
