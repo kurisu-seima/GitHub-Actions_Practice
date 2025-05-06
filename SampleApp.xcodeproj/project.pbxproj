@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		ECC4DA962DC70C1000D69E96 /* Exceptions for "SampleApp" folder in "SampleApp" target */ = {
+		ECC4DD7A2DCA65A800D69E96 /* Exceptions for "SampleApp" folder in "SampleApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -43,7 +43,7 @@
 		EC6A45FA2DABEBDB002387AC /* SampleApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				ECC4DA962DC70C1000D69E96 /* Exceptions for "SampleApp" folder in "SampleApp" target */,
+				ECC4DD7A2DCA65A800D69E96 /* Exceptions for "SampleApp" folder in "SampleApp" target */,
 			);
 			path = SampleApp;
 			sourceTree = "<group>";
@@ -427,7 +427,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
+				VERSIONING_SYSTEM = "";
 			};
 			name = Debug;
 		};
@@ -457,7 +457,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
+				VERSIONING_SYSTEM = "";
 			};
 			name = Release;
 		};
