@@ -48,16 +48,6 @@
 			path = SampleApp;
 			sourceTree = "<group>";
 		};
-		EC6A460B2DABEBDD002387AC /* SampleAppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SampleAppTests;
-			sourceTree = "<group>";
-		};
-		EC6A46152DABEBDD002387AC /* SampleAppUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SampleAppUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				EC6A45FA2DABEBDB002387AC /* SampleApp */,
-				EC6A460B2DABEBDD002387AC /* SampleAppTests */,
-				EC6A46152DABEBDD002387AC /* SampleAppUITests */,
 				EC6A45F92DABEBDB002387AC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -143,9 +131,6 @@
 			dependencies = (
 				EC6A460A2DABEBDD002387AC /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				EC6A460B2DABEBDD002387AC /* SampleAppTests */,
-			);
 			name = SampleAppTests;
 			packageProductDependencies = (
 			);
@@ -165,9 +150,6 @@
 			);
 			dependencies = (
 				EC6A46142DABEBDD002387AC /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				EC6A46152DABEBDD002387AC /* SampleAppUITests */,
 			);
 			name = SampleAppUITests;
 			packageProductDependencies = (
