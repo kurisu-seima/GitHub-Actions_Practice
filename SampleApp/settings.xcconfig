@@ -1,0 +1,12 @@
+//
+//  settings.xcconfig
+//  SampleApp
+//
+//  Created by 栗須　星舞 on 2025/05/11.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+MARKETING_VERSION = 2.5.0
+CURRENT_PROJECT_VERSION = 1

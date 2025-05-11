@@ -62,8 +62,6 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
-      - name: Install dependencies
-        run: bundle install
       - name: select xcode version
         run: sudo xcode-select -s '/Applications/Xcode_16.2.app/Contents/Developer'
       - name: build app
@@ -79,10 +77,23 @@ jobs:
 
           if [[ "$CURRENT_VERSION" < "$RELEASE_VERSION" ]]; then
             echo "needs update version"
-            bundle exec fastlane set_version version:$RELEASE_VERSION
+            sed -i '' "s/^MARKETING_VERSION = .*/MARKETING_VERSION = $RELEASE_VERSION/" SampleApp/settings.xcconfig
+
           else 
             echo "already release version"
           fi
+      - name: Setup Git user
+        run: |
+          git config --global user.name "kurisu-seima"
+          git config --global user.email "kurisuseima@gmail.com"
+      - name: confirm status
+        run: git status
+      - name: commit and push version update
+        run: |
+          RELEASE_VERSION="${{needs.extract_release_version.outputs.release_version}}"
+          git add SampleApp/settings.xcconfig
+          git commit -m "Update app version to $RELEASE_VERSION"
+          git push origin HEAD
     
           
 
